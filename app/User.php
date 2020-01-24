@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     //Cuando saquemos un usuario, poder listar todas las imagenes del usuario
     public function images(){
-        return $this->hasMany('App\Image')
+        return $this->hasMany('App\Image');
     }
 }
