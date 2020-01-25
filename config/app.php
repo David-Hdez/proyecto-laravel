@@ -11,9 +11,10 @@ return [
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     |
+    Predeterminado: 'name' => env('APP_NAME', 'Laravel'),
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Larafoto'),
 
     /*
     |--------------------------------------------------------------------------
@@ -77,10 +78,11 @@ return [
     | The application locale determines the default locale that will be used
     | by the translation service provider. You are free to set this value
     | to any of the locales which will be supported by the application.
-    |
+    |    
+    Predeterminaodo: 'locale' => 'en',
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +92,7 @@ return [
     | The fallback locale determines the locale to use when the current one
     | is not available. You may change the value to correspond to any of
     | the language folders that are provided through your application.
-    |
+    |    
     */
 
     'fallback_locale' => 'en',
