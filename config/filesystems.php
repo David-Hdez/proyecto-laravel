@@ -55,6 +55,20 @@ return [
             'visibility' => 'public',
         ],
 
+        'users' => [//Creando nuevo disco para imagenes del usuario (avatar, crear carpeta en storage->app)
+            'driver' => 'local',
+            'root' => storage_path('app/users'),//Esta es la carpeta
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+        'images' => [//Creando nuevo disco para imagenes del usuario (crear carpeta en storage->app)
+            'driver' => 'local',
+            'root' => storage_path('app/images'),//Esta es la carpeta
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
