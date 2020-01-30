@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;//Añadido Response
 use Illuminate\Support\Facades\Storage;//use: para suir imagenes. utilizar los discos virtuales
 use Illuminate\Support\Facades\File;//Para tomar el objeto del archivo al guardar en el disco virtual
 
 class UserController extends Controller
 {
     //
+    //Constructor para que solo un  usuario logueado cargue el controlador
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function config(){
         return view('user.config');
     }   
@@ -53,5 +59,13 @@ class UserController extends Controller
 
         return redirect()->route('config')
             ->with(['message'=>'Usuario actualizado correctamente']);
+    }
+
+    //Mostrar avatar del usuario
+    public function getImage($file_name){
+        //Acceder al almacenamiento
+        $file=Storage::disk('users')->get($file_name);
+
+        return new Response($file, 200);//Devolviendo respuesta
     }
 }
