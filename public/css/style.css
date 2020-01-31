@@ -1,9 +1,11 @@
+/*Imagen del usuario en configuracion y el navbar*/
 form .avatar{
     width: 55px;
     margin-bottom: 15px;    
 }
 
-.navbar .container-avatar{
+/*Tomando reglas para mostrar todas las imagenes del usuario*/
+.navbar .container-avatar, .pub_image .container-avatar{
     width: 35px;
     height: 35px;
     border-radius: 900px;    
@@ -11,6 +13,17 @@ form .avatar{
     margin-left: 20px;
 }
 
-.navbar .container-avatar img{
+.navbar .container-avatar img, .pub_image .container-avatar img{
     height: 100%;
+}
+
+/*Listado de imagenes del usuario*/
+.pub_image .container-avatar{
+    float: left;
+    margin-right: 15px;
+}
+
+.pub_image .data-user{
+    font-weight: bold;    
+    line-height: 30px;
 }

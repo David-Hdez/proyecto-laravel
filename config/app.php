@@ -14,7 +14,7 @@ return [
     Predeterminado: 'name' => env('APP_NAME', 'Laravel'),
     */
 
-    'name' => env('APP_NAME', 'Larafoto'),
+    'name' => env('APP_NAME', 'LaraFoto'),
 
     /*
     |--------------------------------------------------------------------------

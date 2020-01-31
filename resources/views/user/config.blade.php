@@ -6,9 +6,7 @@
         <div class="col-md-8">
 
             <!--Alerta de Bootstrap (cuando se actualizó correctamente el usuario)-->
-            @if(session('message'))
-                <div class="alert alert-success">{{session('message')}}</div>            
-            @endif
+            @include('includes.message')
             <!--Alerta de Bootstrap-->
 
             <div class="card">
