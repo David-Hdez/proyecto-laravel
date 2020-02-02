@@ -19,9 +19,9 @@
                             </div>
                         @endif
 
-                        <div class="data-user">
-                            {{ $image->user->name }} {{ $image->user->surname }} | {{'@'.$image->user->nick}}
-                        </div>                        
+                        <a href="{{route('image.detail', ['id'=>$image->id])}}">
+                            <div class="data-user">{{ $image->user->name }} {{ $image->user->surname }}<span class="nickname">{{' | @'.$image->user->nick}}</span></div>
+                        </a>
                     </div>
 
                     <div class="card-body">
@@ -32,11 +32,34 @@
                         @endif
 
                         You are logged in!-->
+                        <div class="image-container">
+                            <img src="{{ route('image.file', ['filename'=>$image->image_path]) }}">
+                        </div>                        
+
+                        <div class="description">                            
+                            <span class="nickname">{{'@'.$image->user->nick}}</span>
+                            <span class="nickname date">{{' | '. \FormatTime::LongTimeFilter($image->created_at)}}</span>
+                            <p>{{$image->description}}</p>
+                        </div>
+
+                        <div class="likes">
+                            <img src="{{asset('img/heart-black.png')}}"><!--asset para cargar icono guardado-->
+                        </div>
+
+                        <div class="comments">
+                            <a href="" class="btn btn-sm btn-warning btn-comments">Comentarios ({{count($image->comments)}})</a>
+                        </div>
+
                     </div>
                 </div>
             @endforeach
 
-        </div>
+            <!--Paginación-->
+            <div class="clearfix"></div><!--clearfix para quitar padding que se da con los estilos-->
+            {{$images->links()}}
+            <!--Paginación-->
+
+        </div>        
     </div>
 </div>
 @endsection

@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"><!--New personalizado-->
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet"><!--Personalizado-->
 </head>
 <body>
     <div id="app">

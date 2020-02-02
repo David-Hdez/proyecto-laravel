@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Image;//use del modelo de Image
+use Illuminate\Http\Response;//Añadido Response
 
 class ImageController extends Controller
 {
@@ -47,5 +48,20 @@ class ImageController extends Controller
         $image->save();
         return redirect()->route('home')->with([
             'message'=>'La foto ha sido subida correctamente']);
+    }
+
+    //Devolviendo las imagenes del usuario
+    public function getImage($filename){//Pasanso el nombre del archivo
+        $file=Storage::disk('images')->get($filename);
+
+        return new Response($file, 200);
+    }
+
+    public function detail($id){
+        $image=Image::find($id);
+
+        return view('image.detail', [
+            'image'=>$image
+        ]);
     }
 }
