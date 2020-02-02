@@ -64,3 +64,7 @@ Route::post('/image/save', 'ImageController@save')->name('image.save');
 Route::get('/image/file/{filename}', 'ImageController@getImage')->name('image.file');
 
 Route::get('/imagen/{id}', 'ImageController@detail')->name('image.detail');
+
+Route::post('/comment/save', 'CommentController@save')->name('comment.save');
+
+Route::get('/comment/detele/{id}', 'CommentController@delete')->name('comment.delete');

@@ -14,7 +14,7 @@ class Image extends Model
     //Un solo modelo puede tener muchos comentarios, como comentarios y likes
         
     public function comments(){//Sacando todos los comentarios asignados a la imagen
-        return $this->hasMany('App\Comment');//Como parametro con que objeto se relaciona
+        return $this->hasMany('App\Comment')->orderBy('id', 'DESC');//Como parametro con que objeto se relaciona
     }
 
     public function likes(){
