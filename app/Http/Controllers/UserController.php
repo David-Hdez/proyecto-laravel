@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;//Añadido Response
 use Illuminate\Support\Facades\Storage;//use: para suir imagenes. utilizar los discos virtuales
 use Illuminate\Support\Facades\File;//Para tomar el objeto del archivo al guardar en el disco virtual
+use App\User;
 
 class UserController extends Controller
 {
@@ -67,5 +68,13 @@ class UserController extends Controller
         $file=Storage::disk('users')->get($file_name);
 
         return new Response($file, 200);//Devolviendo respuesta
+    }
+
+    public function profile($id){
+        $user=User::find($id);
+
+        return view('user.profile', [
+            'user'=>$user
+        ]);
     }
 }
