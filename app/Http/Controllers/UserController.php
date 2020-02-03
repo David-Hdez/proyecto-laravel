@@ -16,6 +16,23 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
+    public function index($search=null){
+        if (!empty($search)) {
+            $users=User::where('nick', 'LIKE', "%$search%")
+                ->orWhere('name', 'LIKE', "%$search%")//Si se cumple la primera condicion o esta
+                ->orWhere('surname', 'LIKE', "%$search%")//Si se cumple la primera condicion o esta
+                ->orderBy('id', 'DESC')
+                ->paginate(5);//Sacando todos los usuarios
+        }else {
+            $users=User::orderBy('id', 'DESC')
+                ->paginate(5);//Sacando todos los usuarios
+        }       
+
+        return view('user.index', [
+            'users'=>$users
+        ]);
+    }
+
     public function config(){
         return view('user.config');
     }   
@@ -76,5 +93,5 @@ class UserController extends Controller
         return view('user.profile', [
             'user'=>$user
         ]);
-    }
+    }    
 }

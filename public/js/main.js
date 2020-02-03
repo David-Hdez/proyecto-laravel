@@ -57,4 +57,9 @@ window.addEventListener("load", function(){
         });        
     }   
     dislike();
+
+    //Buscador de usuarios
+    $("#buscador").submit(function(e){        
+        $(this).attr('action', url+"/gente/"+$("#buscador #search").val());//Tomando del input para pasar a la url    
+    });
 });
