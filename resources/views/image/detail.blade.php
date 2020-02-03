@@ -31,8 +31,26 @@
                     </div>
 
                     <div class="likes">
-                        <img src="{{asset('img/heart-black.png')}}"><!--asset: para cargar icono guardado-->
+                        <!--{{var_dump($image->likes)}}-->                            
+                        <!--Comprobando si el usuario logueado ha dado like-->
+                        <?php $user_like=false; ?>
+                        @foreach($image->likes as $like)
+                            @if($like->user->id==Auth::user()->id)
+                                <?php $user_like=true; ?>
+                            @endif
+                        @endforeach
+                        
+                        @if($user_like)
+                            <!--Atributo data para usar en la peticion AJAX-->
+                            <img src="{{asset('img/heart-red.png')}}" data-id="{{$image->id}}" class="btn-dislike"><!--asset para cargar icono guardado-->
+                        @else
+                            <!--Atributo data para usar en la peticion AJAX-->
+                            <img src="{{asset('img/heart-black.png')}}" data-id="{{$image->id}}" class="btn-like">
+                        @endif
+
+                        <span class="number_likes">{{count($image->likes)}}</span>
                     </div>
+
                     <div class="clearfix"></div><!--Limpiando los floats establecidos, esta clase es predeterminada de Bootstrap-->
                     <div class="comments">
                         <h2>Comentarios ({{count($image->comments)}})</h2>
