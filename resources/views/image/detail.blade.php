@@ -51,6 +51,46 @@
                         <span class="number_likes">{{count($image->likes)}}</span>
                     </div>
 
+                    <!--Botones, solo para el dueño de la imagen-->
+                    @if(Auth::user() && Auth::user()->id==$image->user_id)
+                        <div class="actions">
+                            <a href="{{route('image.edit', ['id'=>$image->id])}}" class="btn btn-primary btn-sm">Actualizar</a>                            
+
+                            <!--Modal (de Bootstrap)-->
+                            <!-- Button to Open the Modal -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+                            Borrar
+                            </button>
+
+                            <!-- The Modal -->
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Borrar Imagen</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        ¿Estas seguro de borrar la publicación?
+                                    </div>
+
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <a href="{{route('image.delete', ['id'=>$image->id])}}" class="btn btn-danger">Borrar</a>                        
+                                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+                                    </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Modal (de Bootstrap)-->
+                        </div>
+                    @endif
+
                     <div class="clearfix"></div><!--Limpiando los floats establecidos, esta clase es predeterminada de Bootstrap-->
                     <div class="comments">
                         <h2>Comentarios ({{count($image->comments)}})</h2>
